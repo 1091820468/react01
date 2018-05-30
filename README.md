@@ -29,6 +29,7 @@
        |--package.json
        
     index.html
+    
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -44,15 +45,16 @@
         </html>
         
     index.js
+    
         import React, { Component } from 'react';
         import { render } from 'react-dom';
-
         render(
             <div>Hello World</div>,
             document.getElementById('app')
         )
         
     webpcak.config.js
+    
         const path = require('path');
         module.exports = {
             entry: path.resolve(__dirname, '../src/index.js'), //指定入口文件，程序从这里开始编译,__dirname当前所在目录, ../表示上一级目                                                                   录, ./同级目录

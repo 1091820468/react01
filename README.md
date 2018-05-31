@@ -133,4 +133,57 @@
                     ]
                 }
             }
+            
+  4.src下新建App.js
+  
+            import React, { Component } from 'react';
+            class App extends Component {
+                render() {
+                    return (
+                          <div>NIhao</div>
+                    );
+                }
+            }
+            export default App
+   
+   5.以脚本方式执行构建
+         编辑package.json，加入自定义脚本，在项目根目录执行npm run dev即可达到上面一样的效果。
     
+            "scripts": {
+                "dev": "webpack --config webpack/webpack.config.js"
+             }
+             
+   6.搭建前端服务器：可以发现每次都要重新构建然后刷新index.html才能看到最新的效果，这样开发效率极低，这时就需要webpack-dev-server，
+        webpack-dev-server是一个小型的静态文件服务器，为webpack打包的资源文件提供Web服务。并且提供自动刷新和Hot Module Replacement（模块热替         换：前       端代码变动后无需刷新整个页面，只把变化的部分替换掉）    
+    搭建webpack-dev-server：
+    
+            npm install --save-dev webpack-dev-server;
+     
+   7.在项目根目录下创建bin目录，进入bin目录，创建dev-server.js文件
+   
+        'use strict'
+        const WebpackDevServer = require('webpack-dev-server');
+        const config = require('../webpack/webpack.config');
+        const webpack = require('webpack');
+        const path = require('path');
+        const compiler = webpack(config);
+
+        const server = new WebpackDevServer(compiler, {
+            contentBase: path.resolve(__dirname, '../dist'), //默认会以根文件夹提供本地服务器，这里指定文件夹
+            historyApiFallback: true, //在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
+            port: 9090, //如果省略，默认8080
+            publicPath: "/"
+        });
+        server.listen(9090, 'localhost', function (err) {
+            if (err) throw err
+        })
+        
+   8.编辑package.json，创建一条脚本
+        
+            "scripts": {
+                "dev": "node bin/dev-server"
+             }
+             
+    9.执行npm run dev
+    
+    https://www.cnblogs.com/raion/p/8053799.html

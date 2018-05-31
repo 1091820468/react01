@@ -28,7 +28,7 @@
             |--webpack.config.js
        |--package.json
        
-    index.html
+   index.html
     
         <!DOCTYPE html>
         <html lang="en">
@@ -44,7 +44,7 @@
         </body>
         </html>
         
-    index.js
+   index.js
     
         import React, { Component } from 'react';
         import { render } from 'react-dom';
@@ -53,7 +53,7 @@
             document.getElementById('app')
         )
         
-    webpcak.config.js
+   webpcak.config.js
     
         const path = require('path');
         module.exports = {
@@ -93,10 +93,10 @@
  二、 react搭建项目优化
  
   1.index.js改写
+  
         import React from 'react';
         import { render } from 'react-dom';
         import App from './App'
-
         const renderDom = Component => {
             render(
                 <Component />,
@@ -107,12 +107,12 @@
    
   2. 在项目根目录下新建json文件.babelrc，将babel的配置单独提取出来
   
-        {
-          "presets": [
-            "es2015",
-            "react"
-          ]
-        }
+            {
+              "presets": [
+                "es2015",
+                "react"
+              ]
+            }
   
   3. webpack.config.js做相应的调整
   

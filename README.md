@@ -1,5 +1,5 @@
 # react01
-一.使用webpack搭建react项目
+##一.使用webpack搭建react项目
 
 1.创建一个文件夹first-react，进入该目录，在该目录下打开一个终端，执行npm init
     完成后，npm会自动在你的根目录生成 package.json 文件,package.json 文件不仅仅包含项目的配置信息（比如名称、版本、许可证等元数据），还会记录项目所     需要的各种模块，以及项目运行的脚本等等。
@@ -90,7 +90,7 @@
  5.执行webpack： webpack --config webpack/webpack.config.js
  
  
- 二、 react搭建项目优化
+ ##二、 react搭建项目优化
  
   1.index.js改写
   

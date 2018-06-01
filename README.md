@@ -184,6 +184,5 @@
                 "dev": "node bin/dev-server"
              }
              
-    9.执行npm run dev
+  9.执行npm run dev 修改项目代码，项目会自动重新编译运行，刷新浏览器即可看到最新的更改
     
-    https://www.cnblogs.com/raion/p/8053799.html

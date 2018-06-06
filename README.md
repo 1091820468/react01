@@ -16,18 +16,47 @@
       "devDependencies": {
          "webpack": "^4.10.2"
       }
+ 
+ webpack 的配置文件，是导出一个对象的 JavaScript 文件。在根目录创建config文件夹，添加一个js文件，命名为webpack.base.js
+ 
+        const path = require('path');
+        const DIST_PATH = path.resolve(__dirname, '../dist');
+        module.exports = {
+            entry: {
+                app: './app/index.js'
+            },
+            output: {
+                filename: "js/bundle.js",
+                path: DIST_PATH
+            }
+        };
       
+ webpack4.0增加了mode属性用来表示不同的环境，我们可以使用merge的方式来组织webpack的基础配置和不同环境的配置
+ 安装webpack-merge：
+ 
+        npm install --save-dev webpack-merge
+ 
+ 在config文件夹中再添加一个js文件，命名为webpack.prod.js
+ 
+        const merge = require('webpack-merge');
+        const baseWebpackConfig = require('./webpack.base.js');
+        module.exports = merge(baseWebpackConfig, {
+          mode: 'production'
+        });
+        
  3.目录结构 
  
-       |--dist(项目打包输出目录)
-            |--bundle.js(该文件是由webpack打包生成)
-            |--index.html　　
-       |--src
-            |--index.js
-       |--webpack
-            |--webpack.config.js
-       |--package.json
-       
+        |- /app
+          |- index.js
+        |- /node_modules
+        |- /public
+          |- index.html
+        |- /config
+          |- webpack.base.js
+          |- webpack.prod.js
+        |- package.json
+        |- package-lock.json
+
    index.html
     
         <!DOCTYPE html>
@@ -85,8 +114,6 @@
               babel-loader: babel加载器
               babel-preset-es2015: 支持es2015
               babel-preset-react: jsx 转换成js
-        
- 
  5.执行webpack： webpack --config webpack/webpack.config.js
  
  
